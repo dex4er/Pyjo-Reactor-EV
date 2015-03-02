@@ -1,0 +1,19 @@
+language: python
+env:
+  global:
+    - PYTHONIOENCODING='utf-8'
+matrix:
+  include:
+  - python: "2.7"
+    env: PACKAGES='svn+http://pyev.googlecode.com/svn/tags/pyev-0.8.1-4.04'
+  - python: "3.4"
+    env: PACKAGES='svn+http://pyev.googlecode.com/svn/tags/pyev-0.8.1-4.04'
+before_install:
+  - sudo apt-get update -qq
+install:
+  - sudo apt-get install -qq libev-dev
+  - # pip install -q flake8
+  - # flake8 --config .flake8 .
+  - if [ -n "$PACKAGES" ]; then pip install $PACKAGES; fi
+script:
+  - python test.py
