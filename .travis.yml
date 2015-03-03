@@ -5,9 +5,9 @@ env:
 matrix:
   include:
   - python: "2.7"
-    env: PACKAGES='pyev'
+    env: PACKAGES='pyev git+https://github.com/dex4er/Pyjo'
   - python: "3.4"
-    env: PACKAGES='pyev'
+    env: PACKAGES='pyev git+https://github.com/dex4er/Pyjo'
 before_install:
   - sudo apt-get update -qq
 install:
