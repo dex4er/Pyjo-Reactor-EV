@@ -105,7 +105,8 @@ class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
                 if 'watcher' in self._timers[remove]:
                     self._timers[remove]['watcher'].stop()
                     del self._timers[remove]['watcher']
-        else:
+
+        elif remove is not None:
             fd = remove.fileno()
             if fd in self._ios:
                 if 'watcher' in self._ios[fd]:
