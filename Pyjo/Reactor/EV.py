@@ -41,11 +41,6 @@ Classes
 -------
 """
 
-VERSION = (0, 0, 1)
-
-__version__ = '.'.join(map(str, VERSION))
-
-
 import Pyjo.Reactor.Select
 
 from Pyjo.Base import lazy
