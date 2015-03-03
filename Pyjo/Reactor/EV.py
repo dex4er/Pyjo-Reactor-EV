@@ -114,6 +114,19 @@ class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
 
         super(Pyjo_Reactor_EV, self).remove(remove)
 
+    def reset(self):
+        """::
+
+            reactor.reset()
+
+        Remove all handles and timers.
+        """
+        for fd in self._ios:
+            self._ios[fd]['watcher'].stop()
+        for tid in self._timers:
+            self._timers[tid]['watcher'].stop()
+        super(Pyjo_Reactor_EV, self).reset()
+
     def start(self):
         """::
 
