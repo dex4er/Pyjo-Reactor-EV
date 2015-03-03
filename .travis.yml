@@ -11,7 +11,9 @@ matrix:
 before_install:
   - sudo apt-get update -qq
 install:
-  - sudo apt-get install -qq libev-dev
+  - sudo apt-get install bzr devscripts dh-autoreconf
+  - bzr branch lp:ubuntu/libev
+  - cd livev && debuild -b -us -uc && sudo debi
   - # pip install -q flake8
   - # flake8 --config .flake8 .
   - if [ -n "$PACKAGES" ]; then pip install $PACKAGES; fi
