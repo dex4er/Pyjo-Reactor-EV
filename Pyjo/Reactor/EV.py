@@ -179,18 +179,19 @@ class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
 
                 watcher = self._loop.io(fd, mode,
                                         lambda watcher, revents:
-                                        self._io(watcher, fd, revents))
+                                        self._io(fd, watcher, revents))
                 watcher.start()
                 io['watcher'] = watcher
 
         return self
 
     def _io(self, fd, w, revents):
-        io = self._ios[fd]
-        if revents & pyev.EV_READ:
-            self._sandbox(io['cb'], 'Read', False)
-        if revents & pyev.EV_WRITE:
-            self._sandbox(io['cb'], 'Write', True)
+        if fd in self._ios:
+            io = self._ios[fd]
+            if revents & pyev.EV_READ:
+                self._sandbox(io['cb'], 'Read', False)
+            if revents & pyev.EV_WRITE:
+                self._sandbox(io['cb'], 'Write', True)
 
     def _timer(self, cb, recurring, after):
         if recurring and not after:
