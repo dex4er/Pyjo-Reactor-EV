@@ -306,7 +306,7 @@ if __name__ == '__main__':
     is_ok(timer.get(), 1, 'timer was triggered once')
 
     # Detection
-    is_ok(Pyjo.Reactor.detect(), 'Pyjo.Reactor.EV', 'right class')
+    is_ok(Pyjo.Reactor.Base.detect(), 'Pyjo.Reactor.EV', 'right class')
 
     # Dummy reactor
     class TestReactor(Pyjo.Reactor.EV.object):
@@ -315,7 +315,7 @@ if __name__ == '__main__':
     setenv('PYJO_REACTOR', 'TestReactor')
 
     # Detection (env)
-    is_ok(Pyjo.Reactor.detect(), 'TestReactor', 'right class')
+    is_ok(Pyjo.Reactor.Base.detect(), 'TestReactor', 'right class')
 
     # Reactor in control
     setenv('PYJO_REACTOR', 'Pyjo.Reactor.EV')
