@@ -16,7 +16,7 @@ install:
   - wget https://launchpad.net/ubuntu/+archive/primary/+files/libev_4.15.orig.tar.gz
   - wget https://launchpad.net/ubuntu/+archive/primary/+files/libev_4.15-3.debian.tar.gz
   - dpkg-source -x libev_4.15-3.dsc 
-  - cd libev-4.15 && debuild -b -us -uc && sudo debi
+  - ( cd libev-4.15 && debuild -b -us -uc && sudo debi )
   - # pip install -q flake8
   - # flake8 --config .flake8 .
   - if [ -n "$PACKAGES" ]; then pip install $PACKAGES; fi
