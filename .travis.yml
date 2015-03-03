@@ -5,9 +5,9 @@ env:
 matrix:
   include:
   - python: "2.7"
-    env: PACKAGES='svn+http://pyev.googlecode.com/svn/tags/pyev-0.8.1-4.04'
+    env: PACKAGES='pyev'
   - python: "3.4"
-    env: PACKAGES='svn+http://pyev.googlecode.com/svn/tags/pyev-0.8.1-4.04'
+    env: PACKAGES='pyev'
 before_install:
   - sudo apt-get update -qq
 install:
