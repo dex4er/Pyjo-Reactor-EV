@@ -51,7 +51,7 @@ import weakref
 
 class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
 
-    _loop = lazy(lambda self: pyev.default_loop())
+    _loop = lazy(lambda self: pyev.Loop())
 
     def again(self, tid):
         """::
