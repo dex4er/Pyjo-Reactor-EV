@@ -175,8 +175,7 @@ if __name__ == '__main__':
     ok(readable.get(), 'handle is readable again')
     ok(writable.get(), 'handle is writable again')
     ok(not timer.get(), 'timer was not triggered')
-    # Doesn't work with pyev?
-    # ok(recurring.get(), 'recurring was triggered again')
+    ok(recurring.get(), 'recurring was triggered again')
 
     # Reset
     reactor.reset()
