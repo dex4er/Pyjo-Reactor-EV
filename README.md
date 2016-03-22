@@ -3,6 +3,15 @@
 Pyjo-Reactor-EV
 ===============
 
-Low level event reactor for Pyjo with libev support.
+Low level event reactor for Pyjoyment with pyev support.
 
-See https://github.com/dex4er/Pyjo
+
+Pyjoyment
+=========
+
+An asynchronous, event driver web framework for the Python programming language.
+
+Pyjoyment provides own reactor which handles I/O and timer events in its own
+main event loop but it supports other loops, ie. EV.
+
+See http://www.pyjoyment.net/

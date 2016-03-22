@@ -1,6 +1,6 @@
 """
-Pyjo.Reactor.EV - Low-level event reactor with libev support
-============================================================
+Pyjo.Reactor.EV - Low-level event reactor with pyev support
+===========================================================
 ::
 
     import Pyjo.Reactor.EV
@@ -43,15 +43,21 @@ Classes
 
 import Pyjo.Reactor.Select
 
-from Pyjo.Base import lazy
 
 import pyev
 import weakref
 
 
 class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
+    """
+    :mod:`Pyjo.Reactor.EV` inherits all attributes and methods from
+    :mod:`Pyjo.Reactor.Select` and implements the following new ones.
+    """
 
-    _loop = lazy(lambda self: pyev.Loop())
+    def __init__(self, **kwargs):
+        super(Pyjo_Reactor_EV, self).__init__(**kwargs)
+
+        self._loop = pyev.Loop()
 
     def again(self, tid):
         """::
@@ -230,4 +236,4 @@ class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
 
 
 new = Pyjo_Reactor_EV.new
-object = Pyjo_Reactor_EV  # @ReservedAssignment
+object = Pyjo_Reactor_EV

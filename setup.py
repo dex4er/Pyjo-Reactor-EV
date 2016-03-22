@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 setup(
     name='Pyjo-Reactor-EV',
     version='0.0.1',
-    description='Low level event reactor for Pyjo with libev support.',
+    description='Low level event reactor for Pyjoyment with libev support.',
     long_description=''.join(open('README.md').readlines()[2:]),
     author='Piotr Roszatycki',
     author_email='piotr.roszatycki@gmail.com',
@@ -15,10 +15,10 @@ setup(
     license='Artistic',
     include_package_data=True,
     zip_safe=True,
-    keywords='mojo pyjo reactor pyev libev async',
+    keywords='mojo mojolicious pyjo pyjoyment reactor pyev libev async',
     packages=find_packages(exclude=['t', 't.*']),
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 2 - Pre-Alpha',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Artistic License',

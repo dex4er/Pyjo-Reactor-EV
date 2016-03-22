@@ -1,24 +1,25 @@
+sudo: required
+dist: trusty
 language: python
-env:
-  global:
-    - PYTHONIOENCODING='utf-8'
+addons:
+  apt:
+    packages:
+    - libev-dev
 matrix:
   include:
   - python: "2.7"
-    env: PACKAGES='pyev git+https://github.com/dex4er/Pyjo'
+    env: PYTHONIOENCODING='utf-8'
+  - python: "2.7"
+    env: PYTHONIOENCODING=''
   - python: "3.4"
-    env: PACKAGES='pyev git+https://github.com/dex4er/Pyjo'
-before_install:
-  - sudo apt-get update -qq
-install:
-  - sudo apt-get install devscripts dh-autoreconf
-  - wget https://launchpad.net/ubuntu/+archive/primary/+files/libev_4.15-3.dsc
-  - wget https://launchpad.net/ubuntu/+archive/primary/+files/libev_4.15.orig.tar.gz
-  - wget https://launchpad.net/ubuntu/+archive/primary/+files/libev_4.15-3.debian.tar.gz
-  - dpkg-source -x libev_4.15-3.dsc 
-  - ( cd libev-4.15 && debuild -b -us -uc && sudo debi )
-  - # pip install -q flake8
-  - # flake8 --config .flake8 .
-  - if [ -n "$PACKAGES" ]; then pip install $PACKAGES; fi
+    env: PYTHONIOENCODING='utf-8'
+  - python: "3.4"
+    env: PYTHONIOENCODING=''
+  - python: "3.5"
+    env: PYTHONIOENCODING='utf-8'
+  - python: "3.5"
+    env: PYTHONIOENCODING=''
+  - python: "pypy"
+    env: PYTHONIOENCODING='utf-8'
 script:
   - python test.py
