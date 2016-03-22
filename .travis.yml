@@ -21,5 +21,7 @@ matrix:
     env: PYTHONIOENCODING=''
   - python: "pypy"
     env: PYTHONIOENCODING='utf-8'
+  - python: "pypy"
+    env: PYTHONIOENCODING=''
 script:
   - python test.py
