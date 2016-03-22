@@ -18,3 +18,8 @@ or: ::
 
 * Pyjoyment
 * pyev
+
+``pyev`` requires libev >= 4.15, which can be installed on Debian/Ubuntu with
+command: ::
+
+    apt-get install libev-dev

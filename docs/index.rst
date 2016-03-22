@@ -16,6 +16,20 @@ main event loop but it supports other loops, ie. EV.
 See http://www.pyjoyment.net/
 
 
+pyev
+====
+
+Python libev interface.
+
+``libev`` is a high-performance event loop, supporting eight event types (I/O,
+real time timers, wall clock timers, signals, child status changes, idle, check
+and prepare handlers). ``libev`` supports ``select``, ``poll``, the
+Linux-specific ``epoll``, the BSD-specific ``kqueue`` and the Solaris-specific
+event port mechanisms for file descriptor events (I/O).
+
+See https://pythonhosted.org/pyev/ and http://libev.schmorp.de/
+
+
 Contents:
 
 .. toctree::
