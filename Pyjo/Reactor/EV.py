@@ -45,7 +45,7 @@ advanced diagnostics information printed to ``stderr``. ::
     PYJO_REACTOR_DEBUG=1
 
 You can set the ``PYJO_REACTOR_DIE`` environment variable to make reactor die if task
-dies with exception.
+dies with exception. ::
 
     PYJO_REACTOR_DIE=1
 
