@@ -6,7 +6,7 @@ Pyjo.Reactor.EV - Low-level event reactor with pyev support
     import Pyjo.Reactor.EV
 
     # Watch if handle becomes readable or writable
-    reactor = Pyjo.Reactor.Poll.new()
+    reactor = Pyjo.Reactor.EV.new()
 
     def io_cb(reactor, writable):
         if writable:
@@ -32,6 +32,23 @@ Pyjo.Reactor.EV - Low-level event reactor with pyev support
 
 :mod:`Pyjo.Reactor.EV` is a low-level event reactor based on :mod:`pyev`.
 
+:mod:`Pyjo.Reactor.EV` will be used as the default backend for
+:mod:`Pyjo.IOLoop` if it is loaded before any module using the loop or if
+the ``PYJO_REACTOR`` environment variable is set to ``Pyjo.Reactor.EV`` value.
+
+Debugging
+---------
+
+You can set the ``PYJO_REACTOR_DEBUG`` environment variable to get some
+advanced diagnostics information printed to ``stderr``. ::
+
+    PYJO_REACTOR_DEBUG=1
+
+You can set the ``PYJO_REACTOR_DIE`` environment variable to make reactor die if task
+dies with exception.
+
+    PYJO_REACTOR_DIE=1
+
 Events
 ------
 
@@ -43,9 +60,13 @@ Classes
 
 import Pyjo.Reactor.Select
 
-
 import pyev
 import weakref
+
+from Pyjo.Util import getenv, setenv
+
+
+setenv('PYJO_REACTOR', getenv('PYJO_REACTOR', 'Pyjo.Reactor.EV'))
 
 
 class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
