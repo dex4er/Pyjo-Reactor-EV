@@ -236,7 +236,7 @@ class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
 
     def _timer(self, cb, recurring, after):
         if recurring and not after:
-            after = 0.0001
+            after = 0.000001  # 1 us
 
         tid = super(Pyjo_Reactor_EV, self)._timer(cb, 0, 0)
         self = weakref.proxy(self)
