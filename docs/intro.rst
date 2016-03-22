@@ -24,6 +24,8 @@ pyev
 
 Python libev interface.
 
+See https://pythonhosted.org/pyev/
+
 
 libev
 -----
@@ -34,4 +36,4 @@ and prepare handlers). libev supports ``select``, ``poll``, the
 Linux-specific ``epoll``, the BSD-specific ``kqueue`` and the Solaris-specific
 event port mechanisms for file descriptor events (I/O).
 
-See https://pythonhosted.org/pyev/ and http://libev.schmorp.de/
+See http://libev.schmorp.de/
