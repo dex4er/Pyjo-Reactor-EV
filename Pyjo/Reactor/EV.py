@@ -151,8 +151,10 @@ class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
         """
         for fd in self._ios:
             self._ios[fd]['watcher'].stop()
+
         for tid in self._timers:
             self._timers[tid]['watcher'].stop()
+
         super(Pyjo_Reactor_EV, self).reset()
 
     def start(self):
@@ -197,12 +199,15 @@ class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
 
         if read:
             mode |= pyev.EV_READ
+
         if write:
             mode |= pyev.EV_WRITE
 
         fd = handle.fileno()
+
         if fd not in self._ios:
             self._ios[fd] = {}
+
         io = self._ios[fd]
 
         if mode == 0:
@@ -216,11 +221,13 @@ class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
                 w.set(fd, mode)  # TODO Exception pyev.Error: 'cannot set a watcher while it is active'
                 w.start()
             else:
-                self = weakref.proxy(self)
+                reactor = weakref.proxy(self)
 
-                watcher = self._loop.io(fd, mode,
-                                        lambda watcher, revents:
-                                        self._io(fd, watcher, revents))
+                def watcher_cb(watcher, revents):
+                    if dir(reactor):
+                        reactor._io(fd, watcher, revents)
+
+                watcher = self._loop.io(fd, mode, watcher_cb)
                 watcher.start()
                 io['watcher'] = watcher
 
@@ -239,17 +246,19 @@ class Pyjo_Reactor_EV(Pyjo.Reactor.Select.object):
             after = 0.000001  # 1 us
 
         tid = super(Pyjo_Reactor_EV, self)._timer(cb, 0, 0)
-        self = weakref.proxy(self)
+        reactor = weakref.proxy(self)
 
         def timer_cb(self, tid, watcher, revents):
-            timer = self._timers[tid]
+            timer = reactor._timers[tid]
             if not recurring:
-                self.remove(tid)
-            self._sandbox(timer['cb'], 'Timer {0}'.format(tid))
+                reactor.remove(tid)
+            reactor._sandbox(timer['cb'], 'Timer {0}'.format(tid))
 
-        watcher = self._loop.timer(after, after,
-                                   lambda watcher, revents:
-                                   timer_cb(self, tid, watcher, revents))
+        def watcher_cb(watcher, revents):
+            if dir(reactor):
+                timer_cb(reactor, tid, watcher, revents)
+
+        watcher = self._loop.timer(after, after, watcher_cb)
         watcher.start()
         self._timers[tid]['watcher'] = watcher
 
