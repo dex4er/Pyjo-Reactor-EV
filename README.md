@@ -1,5 +1,3 @@
-[![Documentation Status](https://readthedocs.org/projects/pyjo-reactor-ev/badge/?version=latest)](http://pyjo-reactor-ev.readthedocs.org/en/latest/)
-
 > [!NOTE]
 > This reactor is not maintained: it needs pyev, which is gone. The reactors of
 > Pyjoyment for other event loops, as gevent, whose loop can be libev too, are
