@@ -1,6 +1,12 @@
 [![Build Status](https://travis-ci.org/dex4er/Pyjo-Reactor-EV.png?branch=master)](https://travis-ci.org/dex4er/Pyjo-Reactor-EV)
 [![Documentation Status](https://readthedocs.org/projects/pyjo-reactor-ev/badge/?version=latest)](http://pyjo-reactor-ev.readthedocs.org/en/latest/)
 
+> [!NOTE]
+> This reactor is not maintained: it needs pyev, which is gone. The reactors of
+> Pyjoyment for other event loops, as gevent, whose loop can be libev too, are
+> planned in https://github.com/dex4er/Pyjoyment/issues/275, each as a
+> distribution of its own, for which this one is a template.
+
 Pyjo-Reactor-EV
 ===============
 
