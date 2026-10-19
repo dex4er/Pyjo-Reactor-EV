@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/dex4er/Pyjo-Reactor-EV.png?branch=master)](https://travis-ci.org/dex4er/Pyjo-Reactor-EV)
 [![Documentation Status](https://readthedocs.org/projects/pyjo-reactor-ev/badge/?version=latest)](http://pyjo-reactor-ev.readthedocs.org/en/latest/)
 
 > [!NOTE]
